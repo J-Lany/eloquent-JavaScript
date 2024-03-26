@@ -12,10 +12,20 @@
 */
 
 function range(start, end, step = 1) {
-  const result = [];
-  for (let i = start; i <= end; i += step) {
-    result.push(i);
+  if ((start < end && step <= 0) || (start > end && step >= 0)) {
+    return 'Некорректные значения start, end и step';
   }
+  const result = [];
+  if (step > 0) {
+    for (let i = start; i <= end; i += step) {
+      result.push(i);
+    }
+  } else {
+    for (let i = start; i >= end; i += step) {
+      result.push(i);
+    }
+  }
+
   return result;
 }
 
