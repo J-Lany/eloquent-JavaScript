@@ -25,6 +25,7 @@ let list = {
 Затем добавьте вспомогательную функцию prepend, принимающую элемент и список и создающую новый список, в котором заданный элемент добавлен в начало исходного списка.
 */
 
+//Задача 1
 function arrayToList(array) {
   let result = {};
   let temp = result;
@@ -40,8 +41,7 @@ function arrayToList(array) {
   return result;
 }
 
-const list = arrayToList([1, 2, 3]);
-
+//Задача 2
 function listToArray(list) {
   const result = [];
   let { value, rest } = list;
@@ -54,8 +54,7 @@ function listToArray(list) {
   return result;
 }
 
+//Задача 3
 function prepend(item, list) {
   return { value: item, rest: { ...list } };
 }
-
-console.log(prepend(2, list));
