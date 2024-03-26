@@ -10,6 +10,7 @@
 */
 
 let triangleRow = '#';
+
 while (triangleRow.length <= 7) {
   console.log(triangleRow);
   triangleRow = triangleRow + '#';
