@@ -12,29 +12,27 @@ null также будет "object".
 Object.keys.
 */
 
-//Нарисовать блоксхему этого процесса, для глубокого понимания
+//Нарисовать блоксхему этого процесса, для глубокого понимания. Почему в какой-то момент item = 0
 function deepEqual(obj1, obj2) {
+  const isObjects = typeof obj1 === 'object' && typeof obj2 === 'object';
+  const hasNull = obj1 === null && obj2 === null;
+
   if (Object.keys(obj1).length !== Object.keys(obj2).length) {
     return false;
   }
+
   for (let item in obj1) {
-    console.log('Item:', item);
-    console.log('obj[item]:', obj1[item]);
-    if (typeof obj1 === 'object' && typeof obj2 === 'object') {
+    if (!obj2.hasOwnProperty(item)) return false;
+    if (isObjects && !hasNull) {
       if (!deepEqual(obj1[item], obj2[item])) {
         return false;
       }
     }
-    if (obj1 !== obj2) {
-      return false;
-    }
+    if (obj1 !== obj2) return false;
   }
   return true;
 }
 
 console.log(
-  deepEqual(
-    { a: 'String: a', b: 'String: b', c: { f: 'String: f' } },
-    { a: 'String: a', b: 'String: b', c: 'String: c' }
-  )
+  deepEqual({ a: 'A', b: 'B', c: { f: 'F' } }, { a: 'A', b: 'B', c: 'C' })
 );
